@@ -16,18 +16,24 @@ Replace %address% with beginning of the address you need.
 The program will return the keys that could be written just after the beginning of the address, e.g.:
 
 $ cat addresses.txt
+
 Alabama
+
 Alert
+
 $ ./keyfilter al <addresses.txt
 
 Enable: A E
+
 
 If there is the only address that matches your request, the program will print it:
 
 $ ./keyfilter ala <addresses.txt
 
 Found: Alabama
+
 Enable: B
+
 
 If there are no matches to your request, the program will print "Not found".
 
