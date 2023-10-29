@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<ctype.h>
+#include <stdlib.h>
 
 #define NUM_OF_CHARS 128
 #define MAX_LENGTH 100
 
-char *toonestring(int argc, char *argv[])
+void toonestring(int argc, char *argv[],char *input)
 {
- char input[MAX_LENGTH]={'\0'};
+ int n=0;
  for(int i=1;i<argc;i++,n++)
  {
   for(int j=0;argv[i][j]!='\0';j++,n++)input[n]=argv[i][j];
@@ -17,13 +18,12 @@ char *toonestring(int argc, char *argv[])
    exit(0);
   }
  }
- return input;	
+return;	
 }
 
-int tonewline(int i)
+int tonewline(int i,int c)
 {
- int c;	
- while(c!='\n')
+ while(c!='\n' && c!=EOF)
  {
   c=fgetc(stdin);//na konec radku
   if(i++>=MAX_LENGTH)
@@ -41,8 +41,9 @@ int main(int argc, char* argv[])
 char c=fgetc(stdin);
 int wordfound[MAX_LENGTH+1]={0};
 int alphb[NUM_OF_CHARS]={0};
-int n=0,k=0,enable=0,p=0;//counters
-char *input=toonestring(argc,argv[]);
+int k=0,enable=0,p=0;//counters
+char input[MAX_LENGTH]={'\0'};
+toonestring(argc,argv,input);
 
 while(c!=EOF)
 {	
@@ -51,7 +52,7 @@ while(c!=EOF)
  if(argc==1)alphb[(int)toupper(c)]=1;
  if(tolower(c)!=tolower(input[0]) || argc==1)
  {
-  c=tonewline(i);//na novy radek
+  c=tonewline(i,c);//na novy radek
   continue;
  }
  for(i=0;tolower(input[i])==tolower(c);i++)
@@ -71,7 +72,7 @@ while(c!=EOF)
   alphb[(int)toupper(c)]=1;//add new char found
   while(c!='\n')//zapis noveho wordfound
   {	   	  
-   if(k==0)break;//vordfound uz je vytvoreno
+   if(k!=0)break;//pokud neni to prvni zhoda, wordfound neni nutne 
    if(kostyl1<2 && c==' ')kostyl1=1;else kostyl1=2;//pokud radek v souboru obsahuje zbytecne bile znaky, kostyl1 je 1 
    wordfound[i]=(int)c;
    c=fgetc(stdin);
@@ -91,7 +92,7 @@ while(c!=EOF)
   {
    for(int j=0;j<MAX_LENGTH+1;j++)wordfound[j]=0;//nove wordfound
   }
- c=tonewline(i);
+ c=tonewline(i,c);
 }
 
  if(p==1 || k==1)
