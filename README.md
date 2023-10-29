@@ -19,11 +19,13 @@ $ cat addresses.txt
 Alabama
 Alert
 $ ./keyfilter al <addresses.txt
+
 Enable: A E
 
 If there is the only address that matches your request, the program will print it:
 
 $ ./keyfilter ala <addresses.txt
+
 Found: Alabama
 Enable: B
 
