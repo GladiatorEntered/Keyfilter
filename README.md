@@ -40,8 +40,12 @@ If there are no matches to your request, the program will print "Not found".
 REQUIREMENTS FOR INPUT
 
 Each address in the databaze file should start on a new line.
+
 Any line shouldn't contain more than 100 characters. White space also counts as a character!
+
 Your input line shouldn't contain more then 100 characters.
+
 Your input line nor addresses in your databaze shouldn't contain unprintable characters, such as DEL, backspace, etc.
+
 If your input contains more then one word< it should be written with quotes "".
 
