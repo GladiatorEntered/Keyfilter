@@ -9,18 +9,24 @@ Accidently, you forget the rest of the address... But do not worry! Here you hav
 HOW IT WORKS
 
 Your databaze should be contained in a text file, perhaps addresses.txt. Open linux command line and type a command:
-_$ ./keyfilter %address% <addresses.txt_
+
+$ ./keyfilter %address% <addresses.txt
+
 Replace %address% with beginning of the address you need. 
 The program will return the keys that could be written just after the beginning of the address, e.g.:
-_$ cat addresses.txt
+
+$ cat addresses.txt
 Alabama
 Alert
 $ ./keyfilter al <addresses.txt
-Enable: A E_
+Enable: A E
+
 If there is the only address that matches your request, the program will print it:
+
 $ ./keyfilter ala <addresses.txt
 Found: Alabama
 Enable: B
+
 If there are no matches to your request, the program will print "Not found".
 
 REQUIREMENTS FOR INPUT
